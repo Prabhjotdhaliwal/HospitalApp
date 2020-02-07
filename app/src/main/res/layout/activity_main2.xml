@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity">
+    android:background="#649600"
+    tools:context=".Main2Activity"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp">
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/circle"
+            android:layout_width="238dp"
+            android:layout_height="26dp"
+            android:layout_gravity="bottom"
+            android:padding="40dp"
+
+            />
+    </androidx.viewpager.widget.ViewPager>
+
+    <TextView
+        android:id="@+id/bookapt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Book Appointment"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"></TextView>
+
+    <Button
+        android:id="@+id/SearchButton1"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Search Doctor Or Speciality"></Button>
+
+</LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        >
+
+        <Button
+            android:id="@+id/appointButton"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:drawableTop="@drawable/ic1"
+            android:drawablePadding="-15sp"
+            android:paddingTop="32sp"
+            android:scaleType="fitCenter"
+            android:text="My Appointmets"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#000000">
+
+        </Button>
+
+        <Button
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/cakk"
+            android:textColor="#000000
+"
+            android:id="@+id/CheckinButton"
+            android:paddingTop="32sp"
+            android:drawablePadding="-15sp"
+            android:text="Check-In"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true">
+
+        </Button>
+
+        <Button
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/unnamed"
+            android:textColor="#000000
+"
+            android:id="@+id/reportButton"
+            android:paddingTop="40sp"
+            android:drawablePadding="-15sp"
+            android:text="Reports"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true">
+
+        </Button>
+
+
+        <Button
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/billing"
+            android:textColor="#000000
+"
+            android:id="@+id/billsButton"
+            android:paddingTop="40sp"
+            android:drawablePadding="-15sp"
+            android:text="Bills"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true">
+
+        </Button>
+    </GridLayout>
+</LinearLayout>

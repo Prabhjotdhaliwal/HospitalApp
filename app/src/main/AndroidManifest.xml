@@ -9,6 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SignUpActivity"></activity>
+        <activity
+            android:name=".MyAppointActivity"
+            android:label="MyAppointments"
+            android:parentActivityName=".Main2Activity"></activity>
+        <activity
+            android:name=".BillsActivity"
+            android:label="Bills"
+            android:parentActivityName=".Main2Activity"></activity>
+        <activity
+            android:name=".ReportsActivity"
+            android:label="Reports"
+            android:parentActivityName=".Main2Activity"></activity>
+        <activity
+            android:name=".CheckInActivity"
+            android:label="Check-In"
+            android:parentActivityName=".Main2Activity"></activity>
+        <activity
+            android:name=".DoctorsActivity"
+            android:label=" Search Doctors"
+            android:parentActivityName=".Main2Activity"></activity>
         <activity android:name=".Main2Activity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
