@@ -1,7 +1,6 @@
 package com.example.hospitalapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +18,6 @@ public class MainActivity extends AppCompatActivity
     TextView forgotPass;
     EditText username,password;
     ImageView img;
-
     Intent i;
     String UsernameStr,PasswordStr;
 
@@ -53,14 +51,12 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MainActivity.this, "Please Enter Your details!! UserName & Password", Toast.LENGTH_LONG).show();
 
                 }
-
-
                 else
                     {
 
                     i = new Intent(MainActivity.this, Main2Activity.class);
                     i.putExtra("UserName",UsernameStr);
-                    startActivity(i);
+                        startActivity(i);
                    }
             }
         });
@@ -90,4 +86,5 @@ public class MainActivity extends AppCompatActivity
         });
 
     }
+
 }

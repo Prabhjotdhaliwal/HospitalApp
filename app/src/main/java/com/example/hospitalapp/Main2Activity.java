@@ -1,5 +1,4 @@
 package com.example.hospitalapp;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,12 +8,11 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-
 import me.relex.circleindicator.CircleIndicator;
+
 
 public class Main2Activity extends AppCompatActivity
 {
@@ -27,12 +25,14 @@ public class Main2Activity extends AppCompatActivity
     private CircleIndicator circleIndicator;
     private ViewPagerClass myPager;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setHomeButtonEnabled(false);
         //assign id's
         bookAppoinrment=findViewById(R.id.bookapt);
         searchdoc=findViewById(R.id.SearchView11);
@@ -42,16 +42,13 @@ public class Main2Activity extends AppCompatActivity
         billsbtn =findViewById(R.id.billsButton);
 
 
-
-
         // to set a view pager
         myPager = new ViewPagerClass(this);
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(myPager);
         circleIndicator = findViewById(R.id.circle);
-       circleIndicator.setViewPager(viewPager);
+        circleIndicator.setViewPager(viewPager);
        
-
 
         //to get data from the intent
         Username1 = getIntent().getExtras().getString("UserName");
@@ -64,7 +61,7 @@ public class Main2Activity extends AppCompatActivity
             public void onClick(View v)
             {
                i=new Intent(Main2Activity.this,DoctorsActivity.class);
-               startActivity(i);
+                startActivity(i);
             }
         });
 
@@ -119,9 +116,11 @@ public class Main2Activity extends AppCompatActivity
         });
 
     }
-    //To create a menu in the tool bar
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+
+    //To create a menu in the tool bar
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // to inflate the menu
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;

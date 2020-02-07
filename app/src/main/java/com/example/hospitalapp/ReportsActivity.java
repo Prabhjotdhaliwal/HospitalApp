@@ -10,7 +10,6 @@ public class ReportsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setHomeButtonEnabled(false);    }
 }
