@@ -10,8 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MyAppointActivity extends AppCompatActivity {
-Layout l1;
-TextView t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11;
+
 Button b1;
 Intent i;
     @Override
