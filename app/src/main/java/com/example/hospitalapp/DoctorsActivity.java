@@ -22,7 +22,6 @@ public class DoctorsActivity extends AppCompatActivity {
     ListView listDoc;
     SearchView searchDoc;
 
-//ArrayList<String> DoctorList;
 
     ArrayAdapter<String> myAdapter;
 
@@ -38,41 +37,6 @@ public class DoctorsActivity extends AppCompatActivity {
         searchDoc = findViewById(R.id.SearchView11);
 //call add doctor method to set the reclerview
         addDoctors();
-        //Add items to your doc List
-
-        // DoctorList  = new ArrayList<>();
-
-       /* DoctorList.add("eee");
-        DoctorList.add("ddd");
-        DoctorList.add("sss");
-        DoctorList.add("sss");
-        DoctorList.add("ssss");
-        DoctorList.add("sss");
-        DoctorList.add("sss");
-        DoctorList.add("sss");
-        DoctorList.add("ss");
-        DoctorList.add("sss");*/
-
-        //set adapter to a list view
-        //  myAdapter   = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, (List<String>) listDoc);listDoc.setAdapter(myAdapter);
-
-/*
-       searchDoc.setOnQueryTextListener(new SearchView.OnQueryTextListener()
-        {
-            @Override
-            public boolean onQueryTextSubmit(String query)
-            {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText)
-            {
-                myAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-*/
 
 
 //add Doctornames to the recyclerView List
