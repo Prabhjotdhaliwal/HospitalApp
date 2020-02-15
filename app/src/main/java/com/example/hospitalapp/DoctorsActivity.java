@@ -74,6 +74,7 @@ public class DoctorsActivity extends AppCompatActivity {
         });
 */
 
+
 //add Doctornames to the recyclerView List
     }
 

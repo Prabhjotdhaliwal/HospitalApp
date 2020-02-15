@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,12 +15,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
+        //implements Filterable
 {
+
+
     private static final String TAG = "RecylerViewAdapter";
     private ArrayList<String> DoctorNames =new ArrayList<>();
     private ArrayList<String> DoctorSpeciality =new ArrayList<>();
+
     private Context mcontext;
     public RecyclerViewAdapter(Context context, ArrayList<String> DoctorNames,ArrayList<String> DoctorSpeciality) {
         this.DoctorNames = DoctorNames;
@@ -60,6 +67,7 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
 
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView DoctorName;
@@ -73,4 +81,38 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
             R1=itemView.findViewById(R.id.r1);
         }
     }
+   /* @Override
+    public Filter getFilter() {
+        return searchFilter;
+    }
+
+    private Filter searchFilter =new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint)
+        {
+            List<Exa>
+            List<> FilterDoctorNames =new ArrayList<>();
+
+            if (constraint ==null || constraint.length()==0)
+            {
+                FilterDoctorNames.addAll(DoctorNames);
+            }
+            else
+            {
+                String filerPattern =constraint.toString().toLowerCase().trim();
+
+                for (String item:DoctorNames)
+                {
+                    if (item.getText.)
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+        }
+    }*/
 }
