@@ -39,7 +39,7 @@ startActivity(i);
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(CheckInActivity.this, "Connecting to printer", Toast.LENGTH_SHORT).show();
             }
         });
     }
