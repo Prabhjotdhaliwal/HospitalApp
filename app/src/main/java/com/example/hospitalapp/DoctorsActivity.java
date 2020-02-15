@@ -80,7 +80,7 @@ public class DoctorsActivity extends AppCompatActivity {
         initRecyclerView ();
     }
 
-
+//
 
 //Intialize Recyclerview
         private void  initRecyclerView()
