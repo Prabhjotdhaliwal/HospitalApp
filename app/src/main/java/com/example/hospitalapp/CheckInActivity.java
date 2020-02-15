@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class CheckInActivity extends AppCompatActivity {
 Button b1,b2,b3;
@@ -23,14 +24,15 @@ b2 = findViewById(R.id.MA);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(CheckInActivity.this, "Please wait.. proceeding to check in", Toast.LENGTH_SHORT).show();
             }
         });
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+Intent i = new Intent(CheckInActivity.this, MyAppointActivity.class);
+startActivity(i);
             }
         });
 
