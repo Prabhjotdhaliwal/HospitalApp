@@ -9,28 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".CancelApp"></activity>
+        <activity android:name=".BookApp" />
+        <activity android:name=".SignUpActivity" />
         <activity
             android:name=".MyAppointActivity"
             android:label="MyAppointments"
-            android:parentActivityName=".Main2Activity"></activity>
+            android:parentActivityName=".Main2Activity" />
         <activity
             android:name=".BillsActivity"
             android:label="Bills"
-            android:parentActivityName=".Main2Activity"></activity>
+            android:parentActivityName=".Main2Activity" />
         <activity
             android:name=".ReportsActivity"
             android:label="Reports"
-            android:parentActivityName=".Main2Activity"></activity>
+            android:parentActivityName=".Main2Activity" />
         <activity
             android:name=".CheckInActivity"
             android:label="Check-In"
-            android:parentActivityName=".Main2Activity"></activity>
+            android:parentActivityName=".Main2Activity" />
         <activity
             android:name=".DoctorsActivity"
             android:label=" Search Doctors"
-            android:parentActivityName=".Main2Activity"></activity>
-        <activity android:name=".Main2Activity"></activity>
+            android:parentActivityName=".Main2Activity" />
+        <activity android:name=".Main2Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

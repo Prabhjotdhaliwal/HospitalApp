@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F55CCA33"
+    tools:context=".BookApp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Appointment_Request"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Name"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="D.O.B"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Phone Num"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/doctorname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Doctor name"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Day"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+        <TextView
+            android:id="@+id/Month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Month"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+        <TextView
+            android:id="@+id/Year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Year"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+        <TextView
+            android:id="@+id/Hrs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hrs"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+        <TextView
+            android:id="@+id/Min"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Min"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+        <TextView
+            android:id="@+id/AM_PM"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AM-PM"></TextView>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/DYHI"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:text="Do you have insurance"></TextView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></CheckBox>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/comments"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:width="0dp"
+            android:text="Comments"
+            android:layout_width="0dp"></TextView>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#EEEEEE"
+            android:textColor="#000000"></EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/savedetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Save"></Button>
+</LinearLayout>
