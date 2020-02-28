@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+
+import com.google.firebase.auth.FirebaseAuth;
+
 import me.relex.circleindicator.CircleIndicator;
 
 
@@ -24,7 +27,7 @@ public class Main2Activity extends AppCompatActivity
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private ViewPagerClass myPager;
-
+FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,11 +51,13 @@ public class Main2Activity extends AppCompatActivity
         viewPager.setAdapter(myPager);
         circleIndicator = findViewById(R.id.circle);
         circleIndicator.setViewPager(viewPager);
-       
+
+
+        firebaseAuth=FirebaseAuth.getInstance();
 
         //to get data from the intent
-        Username1 = getIntent().getExtras().getString("UserName");
-        System.out.println(Username1);
+      //  Username1 = getIntent().getExtras().getString("UserName");
+      //  System.out.println(Username1);
         //search doctor
         searchButton1=findViewById(R.id.SearchButton1);
         searchButton1.setOnClickListener(new View.OnClickListener()
@@ -148,6 +153,12 @@ public class Main2Activity extends AppCompatActivity
             case R.id.Help:
                 Toast.makeText(getApplicationContext(), "Help Selected", Toast.LENGTH_LONG).show();
                 return true;
+            case  R.id.LogOut:
+                firebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
+                return true;
+
             default:
                 return false;
         }

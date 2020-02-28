@@ -1,8 +1,11 @@
 package com.example.hospitalapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,16 +14,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
 {
     LinearLayout first;
-    Button login,signup;
-    TextView forgotPass;
+    Button login;
+    TextView forgotPass,registernow;
     EditText username,password;
     ImageView img;
     Intent i;
-    String UsernameStr,PasswordStr;
-
+FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,30 +42,18 @@ public class MainActivity extends AppCompatActivity
 
 
         login=findViewById(R.id.Loginbutton);
-        signup=findViewById(R.id.SignUpbutton3);
-
-
+        registernow=findViewById(R.id.registernow);
+        firebaseAuth=FirebaseAuth.getInstance();
 
         login.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
                 //save user's Information
-                UsernameStr=username.getText().toString();
-                PasswordStr=password.getText().toString();
-                if (UsernameStr.equals(null) || UsernameStr.isEmpty() || PasswordStr.equals(null) || PasswordStr.isEmpty())
-                {
-                    Toast.makeText(MainActivity.this, "Please Enter Your details!! UserName & Password", Toast.LENGTH_LONG).show();
+            LoginUser();
 
-                }
-                else
-                    {
-
-                    i = new Intent(MainActivity.this, Main2Activity.class);
-                    i.putExtra("UserName",UsernameStr);
-                        startActivity(i);
-                   }
             }
+
         });
 
 
@@ -70,12 +65,13 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this,"Enter Your email",Toast.LENGTH_LONG).show();
 
             }
+
         });
 
 
 
         //SignUP
-        signup.setOnClickListener(new View.OnClickListener()
+        registernow.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -85,6 +81,45 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
+
+
+
     }
+    //SignInUser
+       public  void  LoginUser() {
+           String usernameStr, passwordStr;
+
+           usernameStr = username.getText().toString();
+           passwordStr = password.getText().toString();
+
+           if (TextUtils.isEmpty(usernameStr)) {
+               username.setError("Email is Required ");
+
+           }
+           if (TextUtils.isEmpty(passwordStr)) {
+               password.setError("Password is Required ");
+
+           }
+           if (passwordStr.length() < 8) {
+               password.setError("Password must be >= 6 Characters");
+           } else {
+               //Authenticate the user
+               firebaseAuth.signInWithEmailAndPassword(usernameStr, passwordStr).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<AuthResult> task) {
+                       if (task.isSuccessful()) {
+                           Toast.makeText(getApplicationContext(), "User has successfully logged in", Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(MainActivity.this, Main2Activity.class));
+
+                       } else {
+                           Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                       }
+                   }
+
+               });
+
+           }
+       }
 
 }

@@ -21,4 +21,8 @@
     <item
         android:id="@+id/Help"
         android:title="Help?" />
+    <item
+        android:id="@+id/LogOut"
+        android:title="LogOut?" />
+
 </menu>
