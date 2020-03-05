@@ -1,18 +1,24 @@
 package com.example.hospitalapp;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class DoctorsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -34,17 +40,18 @@ public class DoctorsActivity extends AppCompatActivity {
         //assign ids
 
         //  listDoc=findViewById(R.id.listView);
-        searchDoc = findViewById(R.id.SearchView11);
+       // searchDoc = findViewById(R.id.SearchView11);
 //call add doctor method to set the reclerview
-        addDoctors();
+       addDoctors();
 
 
 //add Doctornames to the recyclerView List
     }
 
 
-    private void addDoctors()
-    {
+    private void addDoctors() {
+
+
         DocNames.add("A.B.Prabhu");
         DocNames.add("Ajit Kumar Avasthi");
         DocNames.add("A S Bawa ");
@@ -58,8 +65,6 @@ public class DoctorsActivity extends AppCompatActivity {
         DocNames.add("Navreet Kaur Sandhu");
         DocNames.add("Parneet Sidhu ");
         DocNames.add("Preeti Jindal");
-
-
         DocSpecialityList.add("Plastic and Reconstructive Surgery");
         DocSpecialityList.add("Mental Health and Behavioural Sciences");
         DocSpecialityList.add("Urology");
@@ -75,9 +80,31 @@ public class DoctorsActivity extends AppCompatActivity {
         DocSpecialityList.add("Obstetrics and Gynaecology");
 
 
+        HashMap<String, ArrayList<String>> Doc = new HashMap<>();
+        Doc.put("Doctors", DocNames);
+            Doc.put("Speciality",DocSpecialityList);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Doctors").add(Doc).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Toast.makeText(DoctorsActivity.this, "Doctors Added", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DoctorsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+
+
+            }
+        });
+
 
         //call recyclerView;
-        initRecyclerView ();
+        initRecyclerView();
     }
 
 //

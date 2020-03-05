@@ -16,11 +16,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -125,17 +130,41 @@ loginhere.setOnClickListener(new View.OnClickListener() {
                              // Sign in success, update UI with the signed-in user's information
                              Log.d("TAG", "createUserWithEmail:success");
                              Toast.makeText(getApplicationContext(), "User Created", Toast.LENGTH_SHORT).show();
+                             FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                             startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                             String name=NameEd.getText().toString();
+                             String price=EmailEd.getText().toString();
+                             String qty=Phone.getText().toString();
+
+                             HashMap<String,String> user=new HashMap<>();
+                             user.put("name",name);
+                             user.put("price",price);
+                             user.put("qty",qty);
+
+     db.collection("Users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>()
+   {
+    @Override
+    public void onSuccess(DocumentReference documentReference)
+    {
+        Toast.makeText(SignUpActivity.this,"Added",Toast.LENGTH_SHORT).show();
+
+
+    }
+}).addOnFailureListener(new OnFailureListener() {
+         @Override
+         public void onFailure(@NonNull Exception e)
+         {
+             Toast.makeText(SignUpActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+             e.printStackTrace();
+
+
+         }
+     });
+
+     startActivity(new Intent(SignUpActivity.this, Main2Activity.class));
                              // FirebaseUser user = fireBaseAuth.getCurrentUser();
                              // updateUI(user);
-                         } else {
-                             // If sign in fails, display a message to the user.
-                             Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                             Toast.makeText(SignUpActivity.this, "Authentication failed.",
-                                     Toast.LENGTH_SHORT).show();
                          }
-
                      }
                  });
      }
