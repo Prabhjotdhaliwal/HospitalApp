@@ -65,8 +65,8 @@ FirebaseAuth firebaseAuth;
             @Override
             public void onClick(View v)
             {
-             //  i=new Intent(Main2Activity.this,DoctorsActivity.class);
-              //  startActivity(i);
+               i=new Intent(Main2Activity.this,DoctorsActivity.class);
+                startActivity(i);
             }
         });
 
