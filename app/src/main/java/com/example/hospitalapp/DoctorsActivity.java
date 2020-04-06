@@ -2,6 +2,7 @@ package com.example.hospitalapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -28,10 +29,18 @@ public class DoctorsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private ArrayList<String> DocNames = new ArrayList<>();
     private ArrayList<String> DocSpecialityList = new ArrayList<>();
+    ArrayList<String> DocFees = new ArrayList<>();
+    ArrayList<String> Doctimings = new ArrayList<>();
+    private ArrayList<String> DocImages = new ArrayList<>();
+    ArrayList<String> DocNames1 = new ArrayList<>();
+    ArrayList<String> DocSpecialityList1 = new ArrayList<>();
+    ArrayList<String> DocFees1 = new ArrayList<>();
+    ArrayList<String> Doctimings1 = new ArrayList<>();
+
     ListView listDoc;
     SearchView searchDoc;
     FirebaseFirestore db;
-
+String currentUser;
 
     ArrayAdapter<String> myAdapter;
 
@@ -46,10 +55,8 @@ public class DoctorsActivity extends AppCompatActivity {
         //  listDoc=findViewById(R.id.listView);
         searchDoc = findViewById(R.id.SearchView11);
 //call add doctor method to set the reclerview
-      // addDoctors();
-      //  initRecyclerView();
+    // addDoctors();
 getDoctorsInfo();
-//add Doctornames to the recyclerView List
     }
 
     private void getDoctorsInfo()
@@ -68,26 +75,19 @@ getDoctorsInfo();
                         System.out.println("jots");
                         System.out.println( documentSnapshot.getData().get("DoctorSpeciality"));
 
-                        ArrayList<String> DocNames1 = new ArrayList<>();
-                        ArrayList<String> DocSpecialityList1 = new ArrayList<>();
 
-                        for (int i=0;i<documentSnapshot.getData().size();i++)
-                       {
-                           DocNames1.add(documentSnapshot.getData().get("Doctornames").toString());
-                           DocSpecialityList1.add(documentSnapshot.getData().get("DoctorSpeciality").toString());
 
-                       }
-                     //   ArrayList<String> Docdata = new ArrayList<>();
-                     //   ArrayList<String> DocSpecialitydata = new ArrayList<>();
-                     //   Docdata.add(documentSnapshot.getData().get("Doctors").toString());
-                     //   DocSpecialitydata.add(documentSnapshot.getData().get("Speciality").toString());
 
-                      //   for (int i=0;i<Docdata.size();i++)
-                      //   {
+                           DocNames1= (ArrayList<String>) documentSnapshot.getData().get("Doctornames");
+                        DocSpecialityList1= (ArrayList<String>) documentSnapshot.getData().get("DoctorSpeciality");
+                       Doctimings1=(ArrayList<String>) documentSnapshot.getData().get("Doctimings");
+                        DocFees1=(ArrayList<String>) documentSnapshot.getData().get("Docfees");
 
-                             //   DocSpecialityList1.add(DocSpecialitydata.get(i));
-                      //   }
-                       initRecyclerView(DocNames1,DocSpecialityList1);
+
+
+                        //add Doctornames to the recyclerView List
+
+                        initRecyclerView(DocNames1,DocSpecialityList1,DocFees1,Doctimings1);
 
                     }
                 }
@@ -100,9 +100,22 @@ getDoctorsInfo();
                 e.printStackTrace();
             }
         });
-////
+
 
     }
+
+    public  View.OnClickListener onClickListener=new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View v)
+        {
+            RecyclerView.ViewHolder viewHolder= (RecyclerView.ViewHolder) v.getTag();
+            int position=viewHolder.getAdapterPosition();
+            Toast.makeText(getApplicationContext(),DocNames1.get(position),Toast.LENGTH_LONG).show();
+
+
+        }
+    };
     private void addDoctors() {
 
 
@@ -134,9 +147,38 @@ getDoctorsInfo();
         DocSpecialityList.add("Obstetrics and Gynaecology");
 
 
+        DocFees.add("500");
+        DocFees.add("500");
+        DocFees.add("500");
+        DocFees.add("500");
+        DocFees.add("200");
+        DocFees.add("500");
+        DocFees.add("200");
+        DocFees.add("200");
+        DocFees.add("500");
+        DocFees.add("500");
+        DocFees.add("500");
+        DocFees.add("300");
+        DocFees.add("200");
+
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("9:00 AM :5:30PM ");
+        Doctimings.add("10:00 AM :6:30PM ");
+        Doctimings.add("11:00 PM :7:30PM ");
+        Doctimings.add("10:00 AM :6:30PM ");
+        Doctimings.add("11:00 AM :7:30PM ");
+        Doctimings.add("11:00 AM :7:30PM ");
+        Doctimings.add("11:00 AM :7:30PM ");
         HashMap<String, ArrayList<String>> Doc = new HashMap<>();
         Doc.put("DoctorSpeciality",DocSpecialityList);
         Doc.put("Doctornames", DocNames);
+        Doc.put ("Docfees",DocFees);
+        Doc.put ("Doctimings",Doctimings);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -157,20 +199,20 @@ getDoctorsInfo();
         });
 
 
-        //call recyclerView;
-       //initRecyclerView();
     }
 
-//
+
 
 //Intialize Recyclerview
-        private void  initRecyclerView(ArrayList<String>allDoctors,ArrayList<String>allSpeciality)
+        private void  initRecyclerView(ArrayList<String>allDoctors,ArrayList<String>allSpeciality,ArrayList<String>allDoctorsfees,ArrayList<String>allDoctimings)
         {
             Log.d(TAG,"initRecyclerView:init recyclerView.");
-            RecyclerView recyclerView=findViewById(R.id.recycler_view);
-            RecyclerViewAdapter adapter=new RecyclerViewAdapter(this,allDoctors,allSpeciality);
+            RecyclerView recyclerView=findViewById(R.id.recycler_view1);
+            RecyclerViewAdapter adapter=new RecyclerViewAdapter(this,allDoctors,allSpeciality,allDoctorsfees,allDoctimings);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            adapter.setClickListener(onClickListener);
+
         }
 
 

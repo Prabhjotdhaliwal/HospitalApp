@@ -133,13 +133,13 @@ loginhere.setOnClickListener(new View.OnClickListener() {
                              FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                              String name=NameEd.getText().toString();
-                             String price=EmailEd.getText().toString();
-                             String qty=Phone.getText().toString();
+                             String Email=EmailEd.getText().toString();
+                             String phone=Phone.getText().toString();
 
                              HashMap<String,String> user=new HashMap<>();
                              user.put("name",name);
-                             user.put("price",price);
-                             user.put("qty",qty);
+                             user.put("Email",Email);
+                             user.put("phone",phone);
 
      db.collection("Users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>()
    {

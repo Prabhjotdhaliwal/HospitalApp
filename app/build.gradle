@@ -33,9 +33,9 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:29.1.0'
     implementation 'me.relex:circleindicator:1.2.2@aar'
     implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.1'
+    implementation 'androidx.navigation:navigation-ui:2.2.1'
 
 
 }
 apply plugin: 'com.google.gms.google-services'
-
-

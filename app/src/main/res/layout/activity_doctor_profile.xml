@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8BC34A"
+    android:orientation="vertical"
+    tools:context=".DoctorProfile">
+
+    <TextView
+        android:id="@+id/docnametxt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"></TextView>
+
+    <TextView
+        android:id="@+id/docspectxt"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="30dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2">
+
+    </TextView>
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+    <TextView
+        android:id="@+id/doctimetxt"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2">
+
+    </TextView>
+
+        <TextView
+            android:id="@+id/docfeetxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fee Rs/"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1">
+
+        </TextView>
+    <TextView
+        android:id="@+id/docfeetxt"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2">
+
+    </TextView>
+</LinearLayout>
+
+
+    <TextView
+        android:id="@+id/setdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <CalendarView
+        android:id="@+id/calender"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"></CalendarView>
+
+    <TextView
+        android:id="@+id/settime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select appointment Time"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TextView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TimePicker
+        android:id="@+id/timepicker"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:timePickerMode="spinner">
+
+    </TimePicker>
+
+    <Button
+        android:id="@+id/settimebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Time"></Button>
+
+</LinearLayout>
+    <Button
+        android:id="@+id/bookapt"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="Book Appointment" />
+</LinearLayout>

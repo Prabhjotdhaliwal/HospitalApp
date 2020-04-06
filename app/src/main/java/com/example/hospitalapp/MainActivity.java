@@ -110,8 +110,10 @@ FirebaseAuth firebaseAuth;
                    public void onComplete(@NonNull Task<AuthResult> task) {
                        if (task.isSuccessful()) {
                            Toast.makeText(getApplicationContext(), "User has successfully logged in", Toast.LENGTH_SHORT).show();
-
-                           startActivity(new Intent(MainActivity.this, Main2Activity.class));
+                           Intent i=new Intent (MainActivity.this,Main2Activity.class);
+                             i.putExtra("currentuserk", usernameStr);
+                           startActivity (i);
+                         //  startActivity(new Intent(MainActivity.this, Main2Activity.class));
 
                        } else {
                            Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();

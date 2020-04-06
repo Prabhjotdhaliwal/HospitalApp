@@ -28,7 +28,7 @@ public class Main2Activity extends AppCompatActivity
     private CircleIndicator circleIndicator;
     private ViewPagerClass myPager;
 FirebaseAuth firebaseAuth;
-
+    String currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -43,6 +43,7 @@ FirebaseAuth firebaseAuth;
         checkinbtn =findViewById(R.id.CheckinButton);
         repbtn =findViewById(R.id.reportButton);
         billsbtn =findViewById(R.id.billsButton);
+         currentUser=getIntent().getStringExtra ("currentuserk");
 
 
         // to set a view pager
@@ -66,6 +67,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                i=new Intent(Main2Activity.this,DoctorsActivity.class);
+                i.putExtra("currentuserk",currentUser);
                 startActivity(i);
             }
         });
@@ -77,7 +79,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, MyAppointActivity.class);
-                i.putExtra("UserName",Username1);
+                i.putExtra("currentuserk",currentUser);
                 startActivity(i);
             }
         });
@@ -90,7 +92,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, CheckInActivity.class);
-                i.putExtra("UserName",Username1);
+                i.putExtra("currentuserk",currentUser);
                 startActivity(i);
             }
         });
@@ -103,7 +105,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, ReportsActivity.class);
-                i.putExtra("UserName",Username1);
+                i.putExtra("currentuserk",currentUser);
                 startActivity(i);
             }
         });
@@ -115,7 +117,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, BillsActivity.class);
-                i.putExtra("UserName",Username1);
+                i.putExtra("currentuserk",currentUser);
                 startActivity(i);
             }
         });
