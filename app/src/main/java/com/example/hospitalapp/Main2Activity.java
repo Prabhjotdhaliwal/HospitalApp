@@ -38,7 +38,7 @@ FirebaseAuth firebaseAuth;
         getSupportActionBar().setHomeButtonEnabled(false);
         //assign id's
         bookAppoinrment=findViewById(R.id.bookapt);
-        searchdoc=findViewById(R.id.SearchView11);
+      //  searchdoc=findViewById(R.id.SearchView11);
         myapp =findViewById(R.id.appointButton);
         checkinbtn =findViewById(R.id.CheckinButton);
         repbtn =findViewById(R.id.reportButton);

@@ -63,7 +63,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 Toast.makeText(MainActivity.this,"Enter Your email",Toast.LENGTH_LONG).show();
-
+//sdfghasdfghjk
             }
 
         });
