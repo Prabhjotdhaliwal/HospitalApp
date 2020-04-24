@@ -13,7 +13,7 @@ You can book an appointment,view your Reports,can check Check-In info and Booked
 ## Technologies
 * Java
 * Android
-*Firebase
+* Firebase
 
 ## License
 * Apache License Version 2.0,
