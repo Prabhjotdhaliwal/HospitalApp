@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,8 +20,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashMap;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity
 {
+
     public static final String MYPREFERENCES ="Jot";
     LinearLayout first;
     Button login;
@@ -29,7 +39,10 @@ public class MainActivity extends AppCompatActivity
     ImageView img;
     Intent i;
 FirebaseAuth firebaseAuth;
-
+    //retrofit
+    private Retrofit retrofit;
+    private  RetrofitInterface retrofitInterface;
+    private  String Base_url="http://10.0.2.2:3000/";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -41,7 +54,13 @@ FirebaseAuth firebaseAuth;
         password=(EditText)findViewById(R.id.passwordeditText4);
         img=(ImageView)findViewById(R.id.LogoimageView2);
 
+        //instantiate retrofit
 
+        retrofit =new Retrofit.Builder ().baseUrl (Base_url)
+                .addConverterFactory (GsonConverterFactory.create ())
+                .build ();
+
+        retrofitInterface= retrofit.create (RetrofitInterface.class);
         login=findViewById(R.id.Loginbutton);
         registernow=findViewById(R.id.registernow);
         firebaseAuth=FirebaseAuth.getInstance();
@@ -51,7 +70,8 @@ FirebaseAuth firebaseAuth;
             @Override
             public void onClick(View v) {
                 //save user's Information
-            LoginUser();
+            //LoginUser();
+            HandleLoginUser ();
 
             }
 
@@ -87,6 +107,60 @@ FirebaseAuth firebaseAuth;
 
 
     }
+
+    public  void  HandleLoginUser()
+    {
+        final String usernameStr, passwordStr;
+
+        usernameStr = username.getText().toString();
+        passwordStr = password.getText().toString();
+
+        if (TextUtils.isEmpty(usernameStr)) {
+            username.setError("Email is Required ");
+
+        }
+        if (TextUtils.isEmpty(passwordStr)) {
+            password.setError("Password is Required ");
+
+        }
+        if (passwordStr.length() < 8) {
+            password.setError("Password must be >= 6 Characters");
+        } else {
+            HashMap<String,String > map=new HashMap<> ();
+            map.put("email",username.getText().toString());
+            map.put("password",password.getText().toString());
+            Call<LoginResult> call=retrofitInterface.executeLogin (map);
+            call.enqueue (new Callback<LoginResult> () {
+                @Override
+                public void onResponse(Call<LoginResult> call, Response<LoginResult> response)
+                {
+                    if(response.message ()=="Already registered")
+                    {
+                        LoginResult result=response.body ();
+                        AlertDialog.Builder builder1=new AlertDialog.Builder (MainActivity.this);
+
+                        builder1.setTitle (result.getEmail ());
+                        builder1.setMessage (result.getName());
+                        builder1.show ();
+                        Toast.makeText (MainActivity.this,"right credentials",Toast.LENGTH_LONG).show ();
+                        Intent i=new Intent (MainActivity.this,Main2Activity.class);
+                        startActivity (i);
+
+                    }
+                    else
+                    {
+                        Toast.makeText (MainActivity.this,"Wrong credentials",Toast.LENGTH_LONG).show ();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginResult> call, Throwable t) {
+                    Toast.makeText (MainActivity.this,t.getMessage (),Toast.LENGTH_SHORT).show ();
+                }
+            });
+        }}
+
+
     //SignInUser
        public  void  LoginUser() {
            final String usernameStr, passwordStr;

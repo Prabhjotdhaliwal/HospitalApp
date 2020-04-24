@@ -29,6 +29,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class SignUpActivity extends AppCompatActivity {
 
 
@@ -43,6 +48,10 @@ public class SignUpActivity extends AppCompatActivity {
   String userId;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+
+    private Retrofit retrofit;
+    private  RetrofitInterface retrofitInterface;
+    private  String Base_url="http://10.0.2.2:3000/";
     @Override
     public void onStart() {
         super.onStart();
@@ -80,6 +89,7 @@ signupButton1.setOnClickListener(new View.OnClickListener() {
     {
         registerUser();
         //registerUser1();
+       // HandleSignup ();
     }
 });
 
@@ -111,7 +121,73 @@ loginhere.setOnClickListener(new View.OnClickListener() {
 
         }
 
+    private void HandleSignup()
+    {
+        String namestr, Emailstr, phonestr, passwordstr;
 
+        namestr = NameEd.getText().toString().trim();
+        Emailstr = EmailEd.getText().toString().trim();
+        phonestr = Phone.getText().toString().trim();
+        passwordstr = Password.getText().toString().trim();
+
+
+        if (TextUtils.isEmpty(namestr)) {
+            NameEd.setError("Name is Required ");
+        }
+        if (TextUtils.isEmpty(Emailstr)) {
+            EmailEd.setError("Email is Required ");
+
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(Emailstr).matches()) {
+            EmailEd.setError("Enter a valid Email");
+
+        }
+        if (TextUtils.isEmpty(phonestr)) {
+            Phone.setError("Phone is Required ");
+
+        }
+        if (TextUtils.isEmpty(passwordstr)) {
+            Password.setError("Password is Required ");
+
+        }
+        if (Password.length() < 8) {
+            Password.setError ("Password must be >= 6 Characters");
+        }else
+        {
+            HashMap<String,String >map=new HashMap<> ();
+            map.put ("name",NameEd.getText().toString().trim());
+            map.put ("email",EmailEd.getText().toString().trim());
+            map.put ("phone",Phone.getText().toString().trim());
+            map.put ("password", Password.getText().toString().trim());
+
+            Call<Void> call=retrofitInterface.executeSignup (map);
+            call.enqueue (new Callback<Void> () {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+
+
+                    if(response.message ()=="Already registered")
+                    {
+                        Toast.makeText (SignUpActivity.this," Already Registered",Toast.LENGTH_LONG).show ();
+
+
+                    }else
+                    {
+                        Toast.makeText (SignUpActivity.this,"SignedUp Successfully",Toast.LENGTH_LONG).show ();
+
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText (SignUpActivity.this,t.getMessage (),Toast.LENGTH_LONG).show ();
+                }
+            });
+        }
+
+
+    }
     private  void registerUser() {
       //  savedataintosharedpref();
      String namestr, Emailstr, phonestr, passwordstr;
