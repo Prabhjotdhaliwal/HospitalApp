@@ -47,6 +47,22 @@
         android:columnCount="2"
         >
 
+
+
+        <Button
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/p"
+            android:textColor="#000000
+"
+            android:id="@+id/CheckinButton"
+            android:paddingTop="32sp"
+            android:drawablePadding="-15sp"
+            android:text="Profile"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true">
+
+        </Button>
         <Button
             android:id="@+id/appointButton"
             android:layout_width="205dp"
@@ -56,28 +72,12 @@
             android:drawablePadding="-15sp"
             android:paddingTop="32sp"
             android:scaleType="fitCenter"
-            android:text="My Appointmets"
+            android:text="MY APPOINTMENTS"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="#000000">
 
 
         </Button>
-
-        <Button
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/cakk"
-            android:textColor="#000000
-"
-            android:id="@+id/CheckinButton"
-            android:paddingTop="32sp"
-            android:drawablePadding="-15sp"
-            android:text="Check-In"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true">
-
-        </Button>
-
         <Button
             android:layout_width="205dp"
             android:layout_height="wrap_content"

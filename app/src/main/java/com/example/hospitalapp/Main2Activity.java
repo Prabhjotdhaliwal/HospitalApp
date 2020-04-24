@@ -57,7 +57,7 @@ FirebaseAuth firebaseAuth;
         firebaseAuth=FirebaseAuth.getInstance();
 
         //to get data from the intent
-      //  Username1 = getIntent().getExtras().getString("UserName");
+      // Username1 = getIntent().getExtras().getString("currentuserk");
       //  System.out.println(Username1);
         //search doctor
         searchButton1=findViewById(R.id.SearchButton1);
@@ -79,7 +79,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, MyAppointActivity.class);
-                i.putExtra("currentuserk",currentUser);
+                i.putExtra("currentuserk",Username1);
                 startActivity(i);
             }
         });
@@ -92,7 +92,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, CheckInActivity.class);
-                i.putExtra("currentuserk",currentUser);
+                i.putExtra("currentuserk",Username1);
                 startActivity(i);
             }
         });
@@ -105,7 +105,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, ReportsActivity.class);
-                i.putExtra("currentuserk",currentUser);
+                i.putExtra("currentuserk",Username1);
                 startActivity(i);
             }
         });
@@ -117,7 +117,7 @@ FirebaseAuth firebaseAuth;
             public void onClick(View v)
             {
                 i = new Intent(Main2Activity.this, BillsActivity.class);
-                i.putExtra("currentuserk",currentUser);
+                i.putExtra("currentuserk",Username1);
                 startActivity(i);
             }
         });

@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
 {
+    public static final String MYPREFERENCES ="Jot";
     LinearLayout first;
     Button login;
     TextView forgotPass,registernow;

@@ -25,6 +25,8 @@ public class MyAppointActivity extends AppCompatActivity {
     ArrayList<String> dateapts1 = new ArrayList<>();
     ArrayList<String> timings1 = new ArrayList<>();
 
+    String  Username1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ getbookedappointment ();
 
     private void getbookedappointment()
     {
+
         FirebaseFirestore db=FirebaseFirestore.getInstance();
         db.collection("Appointments").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot> () {
             @Override

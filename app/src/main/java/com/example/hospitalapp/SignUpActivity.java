@@ -1,6 +1,8 @@
 package com.example.hospitalapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +32,7 @@ import java.util.HashMap;
 public class SignUpActivity extends AppCompatActivity {
 
 
+
   Intent i;
   EditText NameEd,EmailEd,Phone,Password;
   TextView loginhere;
@@ -38,7 +41,8 @@ public class SignUpActivity extends AppCompatActivity {
   FirebaseFirestore fstore;
   ProgressBar progressBar;
   String userId;
-
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
     @Override
     public void onStart() {
         super.onStart();
@@ -46,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseUser currentUser = fireBaseAuth.getCurrentUser();
       //  updateUI(currentUser);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
      super.onCreate(savedInstanceState);
@@ -58,6 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
      Phone = (EditText) findViewById(R.id.Phone);
      Password = (EditText) findViewById(R.id.Password1);
      progressBar = findViewById(R.id.progressBar);
+        sp=getSharedPreferences(MainActivity.MYPREFERENCES, Context.MODE_PRIVATE);
 
 //if (fireBaseAuth.getCurrentUser() !=null)
 //{
@@ -73,6 +79,7 @@ signupButton1.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v)
     {
         registerUser();
+        //registerUser1();
     }
 });
 
@@ -86,18 +93,33 @@ loginhere.setOnClickListener(new View.OnClickListener() {
 });
     }
 
+    private void savedataintosharedpref()
+    {
+        String namestr, Emailstr, phonestr, passwordstr;
+
+        namestr = NameEd.getText().toString().trim();
+        Emailstr = EmailEd.getText().toString().trim();
+        phonestr = Phone.getText().toString().trim();
+        passwordstr = Password.getText().toString().trim();
+
+            editor=sp.edit();
+            editor.putString("KeyUser",namestr);
+            editor.putString("KeyPass",Emailstr);
+            editor.putString("KeyEmail",phonestr);
+            editor.apply();
+            //startActivity(new Intent(SignUpActivity.this, Main2Activity.class));
+
+        }
 
 
-
- private  void registerUser() {
-
+    private  void registerUser() {
+      //  savedataintosharedpref();
      String namestr, Emailstr, phonestr, passwordstr;
 
      namestr = NameEd.getText().toString().trim();
      Emailstr = EmailEd.getText().toString().trim();
      phonestr = Phone.getText().toString().trim();
      passwordstr = Password.getText().toString().trim();
-
 
      if (TextUtils.isEmpty(namestr)) {
          NameEd.setError("Name is Required ");
@@ -140,6 +162,13 @@ loginhere.setOnClickListener(new View.OnClickListener() {
                              user.put("name",name);
                              user.put("Email",Email);
                              user.put("phone",phone);
+
+                             editor=sp.edit();
+                             editor.putString("KeyUser",name);
+                             editor.putString("KeyEmail",Email);
+                             editor.putString("KeyPass",phone);
+                             editor.apply();
+
 
      db.collection("Users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>()
    {

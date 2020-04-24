@@ -123,8 +123,10 @@ getDoctorsInfo();
         DocNames.add("Ajit Kumar Avasthi");
         DocNames.add("A S Bawa ");
         DocNames.add(" Abhishek Puri ");
+
         DocNames.add("Bhupinderjit Waraich");
         DocNames.add("Daljeet Kaur ");
+
         DocNames.add("Deepak Kumar Bhasin");
         DocNames.add("Diljot Singh Bedi");
         DocNames.add("Hardeep Singh ");
@@ -137,7 +139,9 @@ getDoctorsInfo();
         DocSpecialityList.add("Urology");
         DocSpecialityList.add("Radiation Oncology");
         DocSpecialityList.add("Mental Health and Behavioural Sciences");
+
         DocSpecialityList.add("Dermatology");
+
         DocSpecialityList.add("Gastroenterology and Hepatology Sciences");
         DocSpecialityList.add("Neonatology");
         DocSpecialityList.add("Mental Health and Behavioural Sciences");
@@ -149,6 +153,7 @@ getDoctorsInfo();
 
         DocFees.add("500");
         DocFees.add("500");
+
         DocFees.add("500");
         DocFees.add("500");
         DocFees.add("200");
@@ -163,6 +168,7 @@ getDoctorsInfo();
 
         Doctimings.add("9:00 AM :5:30PM ");
         Doctimings.add("9:00 AM :5:30PM ");
+
         Doctimings.add("9:00 AM :5:30PM ");
         Doctimings.add("9:00 AM :5:30PM ");
         Doctimings.add("9:00 AM :5:30PM ");
