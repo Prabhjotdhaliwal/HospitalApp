@@ -89,7 +89,7 @@ signupButton1.setOnClickListener(new View.OnClickListener() {
     {
         registerUser();
         //registerUser1();
-       // HandleSignup ();
+      //  HandleSignup ();
     }
 });
 
@@ -166,14 +166,14 @@ loginhere.setOnClickListener(new View.OnClickListener() {
                 public void onResponse(Call<Void> call, Response<Void> response) {
 
 
-                    if(response.message ()=="Already registered")
+                    if(response.message ()!="Already registered")
                     {
-                        Toast.makeText (SignUpActivity.this," Already Registered",Toast.LENGTH_LONG).show ();
+                        Toast.makeText (SignUpActivity.this,"SignedUp Successfully ",Toast.LENGTH_LONG).show ();
 
 
                     }else
                     {
-                        Toast.makeText (SignUpActivity.this,"SignedUp Successfully",Toast.LENGTH_LONG).show ();
+                        Toast.makeText (SignUpActivity.this,"Already Registered",Toast.LENGTH_LONG).show ();
 
 
                     }

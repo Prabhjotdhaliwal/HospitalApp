@@ -53,10 +53,10 @@ String currentUser;
         //assign ids
 
         //  listDoc=findViewById(R.id.listView);
-        searchDoc = findViewById(R.id.SearchView11);
+      //  searchDoc = findViewById(R.id.SearchView11);
 //call add doctor method to set the reclerview
     // addDoctors();
-getDoctorsInfo();
+           getDoctorsInfo();
     }
 
     private void getDoctorsInfo()

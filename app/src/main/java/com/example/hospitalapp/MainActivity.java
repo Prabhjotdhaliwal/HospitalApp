@@ -70,8 +70,8 @@ FirebaseAuth firebaseAuth;
             @Override
             public void onClick(View v) {
                 //save user's Information
-            //LoginUser();
-            HandleLoginUser ();
+            LoginUser();
+           // HandleLoginUser ();
 
             }
 
@@ -126,6 +126,7 @@ FirebaseAuth firebaseAuth;
         if (passwordStr.length() < 8) {
             password.setError("Password must be >= 6 Characters");
         } else {
+
             HashMap<String,String > map=new HashMap<> ();
             map.put("email",username.getText().toString());
             map.put("password",password.getText().toString());
@@ -134,13 +135,16 @@ FirebaseAuth firebaseAuth;
                 @Override
                 public void onResponse(Call<LoginResult> call, Response<LoginResult> response)
                 {
-                    if(response.message ()=="Already registered")
+                    if(response.message ()=="OK")
                     {
+                        LoginResult loginResult = new LoginResult (usernameStr, passwordStr);
+
+
                         LoginResult result=response.body ();
                         AlertDialog.Builder builder1=new AlertDialog.Builder (MainActivity.this);
 
                         builder1.setTitle (result.getEmail ());
-                        builder1.setMessage (result.getName());
+                        builder1.setMessage (result.getPassword ());
                         builder1.show ();
                         Toast.makeText (MainActivity.this,"right credentials",Toast.LENGTH_LONG).show ();
                         Intent i=new Intent (MainActivity.this,Main2Activity.class);
@@ -150,6 +154,11 @@ FirebaseAuth firebaseAuth;
                     else
                     {
                         Toast.makeText (MainActivity.this,"Wrong credentials",Toast.LENGTH_LONG).show ();
+                        System.out.println ("jothii");
+                        LoginResult result=response.body ();
+                        System.out.println (result);
+
+                        System.out.println (response.message ());
                     }
                 }
 
@@ -161,7 +170,7 @@ FirebaseAuth firebaseAuth;
         }}
 
 
-    //SignInUser
+    //SignInUser //firebase
        public  void  LoginUser() {
            final String usernameStr, passwordStr;
 

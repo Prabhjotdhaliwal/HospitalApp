@@ -5,21 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DoctorsActivity">
-    <SearchView
-        android:id="@+id/SearchView11"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="10dp"
-        android:background="#FFFFFF"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search For A Doctor Or Speciality">
 
-    </SearchView>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_view1"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="5dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
